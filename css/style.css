@@ -119,6 +119,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+#content {
+  width: 100%;
+}
 .line {
   width: 100%;
   display: block;
@@ -133,10 +136,10 @@ table {
   overflow: hidden;
 }
 .line .block:nth-child(1) {
-  background-color: #f6f8f9;
+  background-color: #b6c8d6;
 }
 .line .block:nth-child(2) {
-  background-color: #e1e8f0;
+  background-color: #95a3af;
 }
 .line .block:nth-child(3) {
   background-color: #8da3bc;
@@ -151,7 +154,7 @@ table {
   background-color: #030910;
 }
 @media (min-width: 320px) {
-  #wrap {
+  .wrap {
     width: 280px;
     margin: 0 auto;
   }
@@ -209,7 +212,7 @@ table {
   }
 }
 @media (min-width: 768px) {
-  #wrap {
+  .wrap {
     width: 720px;
     margin: 0 auto;
   }
@@ -257,7 +260,7 @@ table {
   }
 }
 @media (min-width: 1024px) {
-  #wrap {
+  .wrap {
     width: 960px;
     margin: 0 auto;
   }
@@ -307,7 +310,7 @@ table {
   }
 }
 @media (min-width: 1280px) {
-  #wrap {
+  .wrap {
     width: 1200px;
     margin: 0 auto;
   }
@@ -357,7 +360,7 @@ table {
   }
 }
 @media (min-width: 1440px) {
-  #wrap {
+  .wrap {
     width: 1200px;
     margin: 0 auto;
   }
@@ -407,7 +410,7 @@ table {
   }
 }
 @media (min-width: 1680px) {
-  #wrap {
+  .wrap {
     width: 1440px;
     margin: 0 auto;
   }
@@ -457,7 +460,7 @@ table {
   }
 }
 @media (min-width: 1920px) {
-  #wrap {
+  .wrap {
     width: 1680px;
     margin: 0 auto;
   }
@@ -506,15 +509,32 @@ table {
     width: 240px;
   }
 }
-.line,
+.wrap {
+  border-width: 0 1px;
+  border-color: #0ff;
+  border-style: solid;
+  -webkit-transition: inherit;
+          transition: inherit;
+}
+.line {
+  position: relative;
+  -webkit-transition: all 0.33s ease-in-out;
+          transition: all 0.33s ease-in-out;
+}
+.line:nth-of-type(odd) {
+  background-color: #fff;
+}
+.line:nth-of-type(even) {
+  background-color: #ededed;
+}
 .count {
-  background-color: #454545;
   font-family: 'roboto';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #2d4f7e;
 }
-.count {
-  padding-left: 20px;
-  color: #f6f8f9;
-}
-.count:first-of-type {
-  padding-top: 20px;
+.block {
+  -webkit-transition: inherit;
+          transition: inherit;
 }

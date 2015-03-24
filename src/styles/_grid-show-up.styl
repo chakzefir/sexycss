@@ -1,9 +1,24 @@
-.line,.count
-	background-color #454545
-	font-family 'roboto'
+.wrap
+	border-width 0 1px
+	border-color cyan
+	border-style solid
+	transition inherit
+
+.line
+	position relative
+	transition all .33s ease-in-out
+
+	&:nth-of-type(odd)
+		background-color #fff
+	&:nth-of-type(even)
+		background-color #ededed
 
 .count
-	padding-left 20px
-	color #F6F8F9
-	&:first-of-type
-		padding-top 20px
+	font-family 'roboto'
+	position absolute
+	top 20px
+	left 20px
+	color #2d4f7e
+
+.block
+	transition inherit
