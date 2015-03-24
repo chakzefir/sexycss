@@ -38,28 +38,14 @@ grid(wrap-width)
 		width wrap-width
 		margin 0 auto
 
-
 	.line
 		.block:nth-last-child(1):first-child,.block:nth-last-child(1):first-child ~ .block
 			w = wrap-width/1 - (block-margin*2)
 			width w px
 
-
 		.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block
 			w = wrap-width/2 - (block-margin*2)
 			width w px
-
-
-		.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
-			w = wrap-width/4 - (block-margin*2)
-			width w px
-
-
-		.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
-			w = wrap-width/6 - (block-margin*2)
-			width w px
-
-
 
 	.line.right-main
 		.block:nth-last-child(2):first-child
@@ -78,6 +64,92 @@ grid(wrap-width)
 		.block:nth-last-child(2):first-child ~ .block
 			w = wrap-width/3 - (block-margin*2)
 			width w px
+
+
+	if wrap-width == 280px
+
+		.line.right-main,.line.left-main
+
+			.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
+
+
+		.line,.line.vertical,.line.horizontal
+
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block,
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
+
+
+		.line.vertical
+
+			.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block,
+			.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
+				w = wrap-width/2 - (block-margin*2)
+				width w px
+
+
+		.line.horizontal
+
+			.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block,
+			.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
+
+
+
+	else if wrap-width == 720px
+
+
+		.line.vertical
+
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block
+				w = wrap-width/3 - (block-margin*2)
+				width w px
+
+			.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
+				w = wrap-width/2 - (block-margin*2)
+				width w px
+
+
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width/3 - (block-margin*2)
+				width w px
+
+
+		.line.horizontal
+
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block,
+			.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
+
+
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width/2 - (block-margin*2)
+				width w px
+
+
+
+	else
+		.line,.line.vertical,.line.horizontal
+
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block
+				w = wrap-width/3 - (block-margin*2)
+				width w px
+
+
+			.block:nth-last-child(4):first-child,.block:nth-last-child(4):first-child ~ .block
+				w = wrap-width/4 - (block-margin*2)
+				width w px
+
+
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width/6 - (block-margin*2)
+				width w px
+
 
 
 
