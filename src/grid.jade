@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+
+	head
+
+		meta(charset='UTF-8')
+		title Rock-CSS
+
+		link(rel='stylesheet', href='css/style.css')
+
+		link(rel="icon", href="img/favicon.png")
+
+	body
+
+		#wrap
+
+			.line
+				.block
+
+			.line
+				- for(i=1; i<=2; i++)
+					.block
+
+			.line.right-main
+				- for(i=1; i<=2; i++)
+					.block
+
+			.line.left-main
+				- for(i=1; i<=2; i++)
+					.block
+
+			.line
+				- for(i=1; i<=4; i++)
+					.block
+
+			.line
+				- for(i=1; i<=6; i++)
+					.block

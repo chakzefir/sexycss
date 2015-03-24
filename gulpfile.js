@@ -18,8 +18,8 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
 
 
-    buildFolder = './public',
-    srcFolder = 'frontend';
+    buildFolder = './',
+    srcFolder = 'src';
 
 gulp.task('connect', function() {
     return connect.server({
@@ -52,14 +52,14 @@ gulp.task('html', function() {
         }));
 });
 
-gulp.task('appScripts', function(){
+gulp.task('scripts', function(){
     browserify({
-        entries: ['./'+srcFolder+'/scripts/app.js']
+        entries: ['./'+srcFolder+'/rock.js']
     }).bundle().on('error', function(error){
         console.log(error.toString());
         this.emit('end');
     })
-    .pipe(source('app.js'))
+    .pipe(source('rock.js'))
     .pipe(gulp.dest(buildFolder))
     .pipe(connect.reload())
 
@@ -71,10 +71,10 @@ gulp.task('copy', function() {
         .pipe(notify("Sir, each file has been copied"));
 });
 
-gulp.task('default', ['css', 'html', 'appScripts'], function( ) {
-    gulp.watch([srcFolder + "/**/*.jade"], ['html','appScripts']);
+gulp.task('default', ['css', 'html', 'scripts'], function( ) {
+    gulp.watch([srcFolder + "/**/*.jade"], ['html']);
     gulp.watch([srcFolder + "/**/*.styl"], ['css']);
-    gulp.watch([srcFolder + "/**/*.js"], ['appScripts']);
+    gulp.watch([srcFolder + "/**/*.js"], ['scripts']);
 });
 
 gulp.task('build', ['css', 'html', 'copy']);
