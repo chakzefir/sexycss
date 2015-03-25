@@ -1,0 +1,186 @@
+primary-white = #ffffff
+section-blue = #50E3C2
+light-grey = #9E9E9E
+dark-grey = #424242
+red-flag = #E3505F
+
+head-1 = 36pt
+head-2 = 30pt
+head-3 = 20pt
+text-l = 18pt
+text-m = 14pt
+text-s = 12pt
+
+
+
+
+
+font(weight = 100)
+	font-family 'Roboto', sans-serif
+	font-weight weight
+
+transition()
+	transition all .4s ease-in-out
+
+
+
+
+
+body
+	font()
+
+.head-1
+	font-size head-1
+	font(700)
+
+.head-2
+	font-size head-2
+	font(400)
+
+.head-3
+	font-size head-3
+	font(100)
+
+.text-l
+	font-size text-l
+	font()
+
+.text-m
+	font-size text-m
+	font()
+
+.text-s
+	font-size text-s
+	font()
+
+
+
+.button
+	font(500)
+	font-size text-m
+	padding 13px 30px
+	display inline-block
+	color primary-white
+	background-color section-blue
+	border 1px solid section-blue
+	outline 0
+	transition()
+	cursor pointer
+	text-decoration none
+	text-align center
+	box-sizing border-box
+
+	&:hover
+		color section-blue
+		border-color section-blue
+		background-color primary-white
+
+	&:active
+		border-width 3px
+		color section-blue
+		background-color dark-sky
+
+	&.menu
+		padding 23px 30px
+
+button
+	@extend .button
+
+
+
+input[type=radio]
+	display none
+
+
+	& + label
+		font-size text-m
+		cursor pointer
+		margin-right 20px
+		display inline-block
+
+		&:before
+			content ''
+			border 1px solid section-blue
+			display inline-block
+			width 12px
+			height 12px
+			margin-right 11px
+			border-radius 100%
+			position relative
+			box-shadow inset 0 0 0 0 section-blue
+			box-sizing border-box
+			padding 5px
+
+		&:hover
+			&:before
+				box-shadow inset 0 0 0 1px section-blue
+
+
+	&:checked + label:before
+		box-shadow inset 0px 0px 0 3px #fff
+		background-color section-blue
+		border-width 1px
+
+
+
+.input
+	error = #E3505F
+
+	width 100%
+	height 40px
+	line-height 40px
+	border 1px solid
+	border-color section-blue
+	font-size text-s
+	font(100)
+	text-indent 18px
+	outline 0
+	box-sizing border-box
+	box-shadow none
+	transition()
+	color light-grey
+	background-color #fff
+
+	&::-webkit-placeholder,
+	&::-moz-placeholder,
+	&::-ms-placeholder
+		color light-grey
+		font-size inherit
+		font(100)
+
+	&:focus,&:active,&:hover
+		color dark-grey
+		border-color dark-grey
+
+	&.error
+		color error
+		border-color error
+
+		&::-webkit-placeholder,
+		&::-moz-placeholder,
+		&::-ms-placeholder
+			color error !important
+
+	&.valid
+		border-color section-blue
+		color dark-grey
+
+		&::-webkit-placeholder,
+		&::-moz-placeholder,
+		&::-ms-placeholder
+			color dark-grey !important
+
+input[type=text]
+input[type=email]
+	@extends .input
+
+
+
+hr
+	border-style solid
+	border-color black
+	margin 10px 0
+	border-width 1px 0 0 0
+	opacity .7
+
+

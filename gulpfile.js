@@ -52,29 +52,24 @@ gulp.task('html', function() {
         }));
 });
 
-gulp.task('scripts', function(){
+gulp.task('js', function(){
     browserify({
-        entries: ['./'+srcFolder+'/rock.js']
+        entries: ['./'+srcFolder+'/app.js']
     }).bundle().on('error', function(error){
         console.log(error.toString());
         this.emit('end');
     })
-    .pipe(source('rock.js'))
+    .pipe(source('app.js'))
     .pipe(gulp.dest(buildFolder))
     .pipe(connect.reload())
 
 });
 
-gulp.task('copy', function() {
-    gulp.src(srcFolder + "/files/**/*.*")
-        .pipe(gulp.dest(buildFolder))
-        .pipe(notify("Sir, each file has been copied"));
-});
 
-gulp.task('default', ['css', 'html', 'scripts'], function( ) {
+gulp.task('default', ['css', 'html'], function( ) {
     gulp.watch([srcFolder + "/**/*.jade"], ['html']);
     gulp.watch([srcFolder + "/**/*.styl"], ['css']);
-    gulp.watch([srcFolder + "/**/*.js"], ['scripts']);
+//    gulp.watch([srcFolder + "/**/*.js"], ['js']);
 });
 
-gulp.task('build', ['css', 'html', 'copy']);
+gulp.task('build', ['css', 'html', 'js']);
