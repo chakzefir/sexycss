@@ -1,54 +1,35 @@
-first-child = #b6c8d6
-second-child = #95a3af
-third-child = #8DA3BC
-fourth-child = #577494
-fifth-child = #24384F
-sixth-child = #030910
-
 block-margin = 20
 
-#content
+#grid
 	width 100%
 
 .line
-	width 100%
+	height 100%
 	display block
 	.block
 		box-sizing border-box
-		min-height 100px
 		display inline-block
 		vertical-align top
-		margin block-margin px
 		font-size 14px
 		overflow hidden
-
-		&:nth-child(1)
-			background-color first-child
-		&:nth-child(2)
-			background-color second-child
-		&:nth-child(3)
-			background-color third-child
-		&:nth-child(4)
-			background-color fourth-child
-		&:nth-child(5)
-			background-color fifth-child
-		&:nth-child(6)
-			background-color sixth-child
+		margin block-margin px
 
 
 grid(wrap-width)
-	.wrap
-		width wrap-width
-		margin 0 auto
+
+	.line,.line.scroll
+		width 100%
+		.wrap
+			width wrap-width
+			height 100%
+			margin 0 auto
 
 	.line
+
 		.block:nth-last-child(1):first-child,.block:nth-last-child(1):first-child ~ .block
 			w = wrap-width/1 - (block-margin*2)
 			width w px
 
-		.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block
-			w = wrap-width/2 - (block-margin*2)
-			width w px
 
 	.line.right-main
 		.block:nth-last-child(2):first-child
@@ -58,6 +39,7 @@ grid(wrap-width)
 		.block:nth-last-child(2):first-child ~ .block
 			w = wrap-width - (wrap-width/3 + (block-margin*2))
 			width w px
+
 
 	.line.left-main
 		.block:nth-last-child(2):first-child
@@ -69,7 +51,9 @@ grid(wrap-width)
 			width w px
 
 
+
 	if wrap-width == 280px
+
 
 		.line.right-main,.line.left-main
 
@@ -85,6 +69,9 @@ grid(wrap-width)
 				w = wrap-width - (block-margin*2)
 				width w
 
+			.block:nth-last-child(5):first-child,.block:nth-last-child(5):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
 
 		.line.vertical
 
@@ -101,6 +88,22 @@ grid(wrap-width)
 				w = wrap-width - (block-margin*2)
 				width w
 
+
+		.line.scroll
+			overflow scroll
+			width 90%
+			margin 0 auto
+
+			.wrap
+				width 5000px
+				overflow initial
+
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block,
+			.block:nth-last-child(5):first-child,.block:nth-last-child(5):first-child ~ .block,
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w
+				float left
 
 
 	else if wrap-width == 720px
@@ -135,9 +138,33 @@ grid(wrap-width)
 				width w px
 
 
+			.block:nth-last-child(5):first-child,.block:nth-last-child(5):first-child ~ .block
+				w = wrap-width - (block-margin*2)
+				width w px
+
+
+		.line.scroll
+			overflow scroll
+			width 90%
+			margin 0 auto
+
+			.wrap
+				width 5000px
+				overflow initial
+			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block,
+			.block:nth-last-child(5):first-child,.block:nth-last-child(5):first-child ~ .block,
+			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+				w = wrap-width/2 - (block-margin*2)
+				width w
+				float left
+
 
 	else
-		.line,.line.vertical,.line.horizontal
+		.line,.line.vertical,.line.horizontal,.line.scroll
+
+			.block:nth-last-child(2):first-child,.block:nth-last-child(2):first-child ~ .block
+				w = wrap-width/2 - (block-margin*2)
+				width w px
 
 			.block:nth-last-child(3):first-child,.block:nth-last-child(3):first-child ~ .block
 				w = wrap-width/3 - (block-margin*2)
@@ -149,11 +176,22 @@ grid(wrap-width)
 				width w px
 
 
-			.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
-				w = wrap-width/6 - (block-margin*2)
+			.block:nth-last-child(5):first-child,.block:nth-last-child(5):first-child ~ .block
+				w = wrap-width/5 - (block-margin*2)
 				width w px
 
 
+
+		.line
+			&,&.vertical
+				.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+					w = wrap-width/6 - (block-margin*2)
+					width w px
+
+			&.horizontal
+				.block:nth-last-child(6):first-child,.block:nth-last-child(6):first-child ~ .block
+					w = wrap-width/3 - (block-margin*2)
+					width w px
 
 
 

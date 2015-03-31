@@ -1,26 +1,29 @@
 primary-white = #ffffff
-section-blue = #50E3C2
+text-blue = #50E3C2
+text-blue = #13C5E9
 light-grey = #9E9E9E
 dark-grey = #424242
 red-flag = #E3505F
 
-title-1 = 36pt
-title-2 = 30pt
-title-3 = 20pt
-text-l = 18pt
-text-m = 14pt
-text-s = 12pt
+title-1 = 36px
+title-2 = 30px
+title-3 = 20px
+text-l = 18px
+text-m = 14px
+text-s = 12px
 
 
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,700,400&subset=cyrillic,latin);
 
 
-font(weight = 100)
+
+font(weight = 400)
 	font-family 'Roboto', sans-serif
 	font-weight weight
 
-transition()
-	transition all .4s ease-in-out
+transition(time = .34s)
+	transition all time ease-in-out
 
 
 
@@ -31,38 +34,56 @@ body
 
 .title-1
 	font-size title-1
+	line-height 40px
 	font(700)
 
 .title-2
 	font-size title-2
-	font(400)
+	line-height 40px
+	font()
 
 .title-3
 	font-size title-3
-	font(100)
+	line-height 20px
+	font(200)
 
 .text-l
 	font-size text-l
+	line-height 20px
 	font()
 
 .text-m
 	font-size text-m
+	line-height 20px
 	font()
 
 .text-s
 	font-size text-s
+	line-height 20px
 	font()
 
 
 
+button(static-color, static-bg, hover-color, hover-bg, active-color, active-bg)
+	color static-color
+	background-color static-bg
+	border 1px solid static-bg
+
+	&:hover
+		color hover-color
+		border-color hover-color
+		background-color hover-bg
+
+	&:active
+		border-width 3px
+		color active-color
+		background-color active-bg
+
 .button
-	font(500)
+	font(600)
 	font-size text-m
-	padding 13px 30px
+	height 60px
 	display inline-block
-	color primary-white
-	background-color section-blue
-	border 1px solid section-blue
 	outline 0
 	transition()
 	cursor pointer
@@ -70,15 +91,7 @@ body
 	text-align center
 	box-sizing border-box
 
-	&:hover
-		color section-blue
-		border-color section-blue
-		background-color primary-white
-
-	&:active
-		border-width 3px
-		color section-blue
-		background-color dark-sky
+	button(primary-white, text-blue, text-blue, primary-white, text-blue, primary-white)
 
 	&.menu
 		padding 23px 30px
@@ -100,25 +113,25 @@ input[type=radio]
 
 		&:before
 			content ''
-			border 1px solid section-blue
+			border 1px solid text-blue
 			display inline-block
 			width 12px
 			height 12px
 			margin-right 11px
 			border-radius 100%
 			position relative
-			box-shadow inset 0 0 0 0 section-blue
+			box-shadow inset 0 0 0 0 text-blue
 			box-sizing border-box
 			padding 5px
 
 		&:hover
 			&:before
-				box-shadow inset 0 0 0 1px section-blue
+				box-shadow inset 0 0 0 1px text-blue
 
 
 	&:checked + label:before
 		box-shadow inset 0px 0px 0 3px #fff
-		background-color section-blue
+		background-color text-blue
 		border-width 1px
 
 
@@ -130,9 +143,9 @@ input[type=radio]
 	height 40px
 	line-height 40px
 	border 1px solid
-	border-color section-blue
+	border-color text-blue
 	font-size text-s
-	font(100)
+	font(200)
 	text-indent 18px
 	outline 0
 	box-sizing border-box
@@ -140,13 +153,14 @@ input[type=radio]
 	transition()
 	color light-grey
 	background-color #fff
+	vertical-align top
 
 	&::-webkit-placeholder,
 	&::-moz-placeholder,
 	&::-ms-placeholder
 		color light-grey
 		font-size inherit
-		font(100)
+		font(200)
 
 	&:focus,&:active,&:hover
 		color dark-grey
@@ -162,7 +176,7 @@ input[type=radio]
 			color error !important
 
 	&.valid
-		border-color section-blue
+		border-color text-blue
 		color dark-grey
 
 		&::-webkit-placeholder,
@@ -172,7 +186,13 @@ input[type=radio]
 
 input[type=text]
 input[type=email]
+textarea
 	@extends .input
+
+textarea
+	line-height initial
+	padding 20px 0 0
+	resize none
 
 
 

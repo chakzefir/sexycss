@@ -7,16 +7,11 @@ var gulp = require('gulp'),
 
     stylus = require('gulp-stylus'),
     prefix = require('gulp-autoprefixer'),
-    postcss = require('gulp-postcss'),
-
 
     jade = require('gulp-jade'),
 
     concat = require('gulp-concat'),
-
-    browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
-
+    uglify = require('gulp-uglify'),
 
     buildFolder = './',
     srcFolder = 'src';
@@ -30,7 +25,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('css', function() {
-    gulp.src(srcFolder + "/**/[^_]*.styl")
+    gulp.src(srcFolder + "/styles/[^_]*.styl")
         .pipe(plumber({errorHandler: notify.onError("Css error: <%= error.message %>")}))
         .pipe(stylus({'include css': true}))
         .pipe(concat('style.css'))
@@ -41,7 +36,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('html', function() {
-    gulp.src(srcFolder + "/[^_]*.jade")
+    gulp.src(srcFolder + "/pages/[^_]*.jade")
         .pipe(plumber({errorHandler: notify.onError("Html error: <%= error.message %>")}))
         .pipe(jade())
         .pipe(gulp.dest(buildFolder))
@@ -53,23 +48,22 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function(){
-    browserify({
-        entries: ['./'+srcFolder+'/app.js']
-    }).bundle().on('error', function(error){
-        console.log(error.toString());
-        this.emit('end');
-    })
-    .pipe(source('app.js'))
-    .pipe(gulp.dest(buildFolder))
-    .pipe(connect.reload())
-
+    gulp.src(srcFolder + "/js/[^_]*.js")
+        .pipe(plumber({errorHandler: notify.onError("Js error: <%= error.message %>")}))
+        .pipe(uglify())
+        .pipe(gulp.dest(buildFolder + "/js"))
+        .pipe(connect.reload())
+        .pipe(notify({
+            message: "Js succeed",
+            onLast: true
+        }));
 });
 
 
-gulp.task('default', ['css', 'html'], function( ) {
+gulp.task('default', ['css', 'html', 'js'], function( ) {
     gulp.watch([srcFolder + "/**/*.jade"], ['html']);
     gulp.watch([srcFolder + "/**/*.styl"], ['css']);
-//    gulp.watch([srcFolder + "/**/*.js"], ['js']);
+    gulp.watch([srcFolder + "/**/*.js"], ['js']);
 });
 
 gulp.task('build', ['css', 'html', 'js']);

@@ -1,12 +1,20 @@
+first-child = #b6c8d6
+second-child = #95a3af
+third-child = #8DA3BC
+fourth-child = #577494
+fifth-child = #24384F
+sixth-child = #030910
+
 .wrap
 	border-width 0 1px
 	border-color cyan
 	border-style solid
 	transition inherit
 
+
 .line
 	position relative
-	transition all .33s ease-in-out
+	/*transition all .33s ease-in-out*/
 
 	&:nth-of-type(odd)
 		background-color #fff
@@ -22,3 +30,17 @@
 
 .block
 	transition inherit
+	min-height 100px
+
+	&:nth-child(1)
+		background-color first-child
+	&:nth-child(2)
+		background-color second-child
+	&:nth-child(3)
+		background-color third-child
+	&:nth-child(4)
+		background-color fourth-child
+	&:nth-child(5)
+		background-color fifth-child
+	&:nth-child(6)
+		background-color sixth-child
