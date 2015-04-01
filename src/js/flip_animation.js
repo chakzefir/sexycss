@@ -22,8 +22,6 @@ window.onload = function(){
         i++
     }
 
-    console.log(i);
-
     sections.forEach(function(element){
 
         new Waypoint({
