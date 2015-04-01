@@ -1,5 +1,77 @@
+flip-animation()
+	transition all .34s linear
+
 .flip-section
 	opacity 0
 	position relative
-	top 150px
+	top 100px
 	transition top .4s ease, opacity .6s ease .2s
+
+.button
+	position fixed
+	top 40px
+	left 40px
+	cursor pointer
+	z-index 150
+
+
+.black-out
+	background-color rgba(0,0,0,.5)
+
+
+
+.popup
+	width 100%
+	height 100%
+	overflow scroll
+	position fixed
+	top 0
+	left 0
+	display block
+	background-color rgba(0, 0, 0, 0.5)
+	flip-animation()
+
+	&.hide
+		z-index -1
+		opacity 0
+
+
+	&.show
+		z-index 8
+		opacity 1
+
+
+.popup-wrapper
+	position absolute
+	width 100%
+	height 100%
+	left 0
+	top 0
+	right 0
+	bottom 0
+	z-index 9
+	cursor pointer
+
+
+.popup-container
+	position absolute
+	top 100%
+	left 0
+	right 0
+	margin 40px auto
+	transition inherit
+	background-color #fff
+	z-index 9
+	cursor default
+	width 680px
+	height 600px
+
+.popup-close
+	top 30px
+	right 30px
+	background-color black
+	width 27px
+	height 27px
+	z-index 66666
+	position absolute
+	cursor pointer

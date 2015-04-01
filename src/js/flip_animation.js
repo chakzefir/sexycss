@@ -19,9 +19,10 @@ window.onload = function(){
     while(visibleHeight < screenHeight){
         visibleHeight += sections[i].offsetHeight
         sections[i].style.transition = 'top .4s ease '+ ( .2 + (i * .1) ) +'s, opacity .6s ease '+ ( (.2+(i * .1))+.2 ) +'s'
-//        sections[i].style.-webkit-transition = 'top .4s ease '+(.2*i)+'s, opacity .6s ease .4s'
         i++
     }
+
+    console.log(i);
 
     sections.forEach(function(element){
 
@@ -41,5 +42,26 @@ window.onload = function(){
         })
 
     });
+
+
+
+
+    var popUp = document.querySelector(".popup"),
+        popUpContainer = popUp.querySelector(".popup-container"),
+        popUpOpen = document.querySelector("[data-bind='popUpOpen']"),
+        popUpClose = document.querySelector("[data-bind='popUpClose']");
+
+    popUpOpen.addEventListener('click', function(){
+        popUp.className = 'popup show';
+        popUpContainer.style.top = '0';
+    }, false);
+
+    popUpClose.addEventListener('click', function(){
+        popUp.className = 'popup hide';
+        popUpContainer.style.top = '-100%';
+        setTimeout(function(){
+            popUpContainer.style.top = '100%';
+        }, 300)
+    }, false);
 
 };
