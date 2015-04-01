@@ -3,7 +3,7 @@
 
 Даная структура файлов может являться исходной архитектурой для вашего проекта.
 
-###Browser support
+##Browser support
 ![browser support](http://take.ms/LzVjx)
 
 
