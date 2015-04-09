@@ -1,28 +1,38 @@
-primary-white = #ffffff
-text-blue = #50E3C2
-text-blue = #13C5E9
-light-grey = #9E9E9E
-dark-grey = #424242
-red-flag = #E3505F
-
-title-1 = 36px
-title-2 = 30px
-title-3 = 20px
-text-l = 18px
-text-m = 14px
-text-s = 12px
-
-
-
+//5. UI-kit
+///5.0 Переменные и функции
+////5.0.1 Шрифты
 @import url(http://fonts.googleapis.com/css?family=Roboto:100,700,400&subset=cyrillic,latin);
+@import url(http://webfonts.ru/import/ralewayc.css);
 
-
-
-font(weight = 400)
+roboto(weight = 400)
 	font-family 'Roboto', sans-serif
 	font-weight weight
 
-transition(time = .34s)
+raleway(weight = 400)
+	font-family 'Raleway'
+	font-weight weight
+
+georgia(weight = 400)
+	font-family 'Georgia'
+	font-weight weight
+
+
+////5.0.2 Цвета
+white = #ffffff
+true-black = #000000
+
+dark-grey = #9E9E9E
+firm-blue = #4A90E2
+
+darken-grey = #444444
+lighter-grey = #535353
+
+pink-red = #FF6666
+salad-green = #7ED321
+
+
+////5.0.3 Анимация
+transition(time = .28s)
 	transition all time ease-in-out
 
 
@@ -30,60 +40,70 @@ transition(time = .34s)
 
 
 body
-	font()
+	raleway()
+
+///5.1 Типографика
 
 .title-1
-	font-size title-1
+	font-size 36px
 	line-height 40px
-	font(700)
+	raleway(700)
+
+title-1()
+	@extend .title-1
+
 
 .title-2
-	font-size title-2
+	font-size 24px
 	line-height 40px
-	font()
+	raleway(700)
+
+title-2()
+	@extend .title-2
+
 
 .title-3
-	font-size title-3
+	font-size 20px
 	line-height 20px
-	font(200)
+	raleway(700)
+
+title-3()
+	@extend .title-3
+
 
 .text-l
-	font-size text-l
+	font-size 18px
 	line-height 20px
-	font()
+	raleway()
+text-l()
+	@extend .text-l
+
 
 .text-m
-	font-size text-m
+	font-size 14px
 	line-height 20px
-	font()
+	raleway()
+
+text-m()
+	@extend .text-m
+
 
 .text-s
-	font-size text-s
+	font-size 12px
 	line-height 20px
-	font()
+	raleway()
+
+text-s()
+	@extend .text-s
 
 
 
-button(static-color, static-bg, hover-color, hover-bg, active-color, active-bg)
-	color static-color
-	background-color static-bg
-	border 1px solid static-bg
-
-	&:hover
-		color hover-color
-		border-color hover-color
-		background-color hover-bg
-
-	&:active
-		border-width 3px
-		color active-color
-		background-color active-bg
-
+///5.2 Кнопки
 .button
 	font(600)
 	font-size text-m
-	height 60px
-	line-height 60px
+	padding 10px 20px
+	letter-spacing .5px
 	display inline-block
 	outline 0
 	transition()
@@ -91,96 +111,154 @@ button(static-color, static-bg, hover-color, hover-bg, active-color, active-bg)
 	text-decoration none
 	text-align center
 	box-sizing border-box
+	color white
+	box-shadow inset 0 0 100px 100px firm-blue
 
-	button(primary-white, text-blue, text-blue, primary-white, text-blue, primary-white)
+	&:hover
+		box-shadow inset 0 0 0 1px firm-blue
+		color firm-blue
+		text-decoration none
+
+	&:active
+		box-shadow inset 0 0 100px 100px firm-blue
+		color white
+		text-decoration none
+
+
+	&.menu
+		color black
+		background-color white
+		box-shadow inset 0 0 0 0 firm-blue
+
+		&:hover
+			color true-black
+			box-shadow inset 0 0 0 3px firm-blue
+			background-color white
+
+		&:active
+			color white
+			box-shadow inset 0 0 100px 100px firm-blue
 
 button
 	@extend .button
 
 
 
+///5.3 Ссылки
+.link
+	raleway(700)
+	font-size text-m
+	color dark-grey
+	border-bottom 2px solid firm-blue
+	text-decoration none
+	transition()
+	&:hover, &:active
+		padding-bottom 3px
+		color firm-blue
+
+
+//этот родитель требуется для того, чтобы не дёргались его дети
+form#person-qty
+	height 46px
+	line-height 46px
+
+
+///5.4 Радио боксы
 input[type=radio]
 	display none
-
 
 	& + label
 		font-size text-m
 		cursor pointer
 		margin-right 20px
 		display inline-block
+		vertical-align middle
+		transition()
 
 		&:before
 			content ''
-			border 1px solid text-blue
 			display inline-block
-			width 12px
-			height 12px
+			width 10px
+			height 10px
 			margin-right 11px
 			border-radius 100%
 			position relative
-			box-shadow inset 0 0 0 0 text-blue
-			box-sizing border-box
-			padding 5px
-
-		&:hover
-			&:before
-				box-shadow inset 0 0 0 1px text-blue
+			background-color #ffffff
+			border-width 5px
+			border-style solid
+			border-color transparent
+			vertical-align inherit
+			transition()
 
 
 	&:checked + label:before
-		box-shadow inset 0px 0px 0 3px #fff
-		background-color text-blue
-		border-width 1px
+		border-color firm-blue
 
+
+	&.person-qty + label
+		text-align center
+		border-radius 100%
+		width 40px
+		height 40px
+		line-height 40px
+		border 1px solid dark-grey
+		color dark-grey
+		roboto()
+
+		&:before
+			display none
+
+	&.person-qty:checked + label
+		width 46px
+		height 46px
+		line-height 46px
+		border 1px solid firm-blue
+		color #ffffff
+		roboto(700)
+		background-color firm-blue
+
+
+///5.5 Поля ввода
+.input-label
+	raleway()
+	padding-left 10px
+	color dark-grey
+	@extend .text-m
 
 
 .input
-	error = #E3505F
-
 	width 100%
 	height 40px
 	line-height 40px
 	border 1px solid
-	border-color text-blue
-	font-size text-s
-	font(200)
-	text-indent 18px
+	border-color #EBEBEB
+	font-size text-m
+	raleway()
+	text-indent 10px
 	outline 0
 	box-sizing border-box
 	box-shadow none
 	transition()
-	color light-grey
-	background-color #fff
+	background-color #EBEBEB
+	color dark-grey
 	vertical-align top
 
 	&::-webkit-placeholder,
 	&::-moz-placeholder,
 	&::-ms-placeholder
-		color light-grey
-		font-size inherit
-		font(200)
-
-	&:focus,&:active,&:hover
 		color dark-grey
-		border-color dark-grey
+		font-size inherit
+		raleway()
+
 
 	&.error
-		color error
-		border-color error
-
-		&::-webkit-placeholder,
-		&::-moz-placeholder,
-		&::-ms-placeholder
-			color error !important
+		color pink-red
+		border-color pink-red
 
 	&.valid
-		border-color text-blue
-		color dark-grey
+		border-color salad-green
+		color black
 
-		&::-webkit-placeholder,
-		&::-moz-placeholder,
-		&::-ms-placeholder
-			color dark-grey !important
 
 input[type=text]
 input[type=email]
@@ -194,11 +272,11 @@ textarea
 
 
 
+
 hr
 	border-style solid
 	border-color black
 	margin 10px 0
 	border-width 1px 0 0 0
 	opacity .7
-
 

@@ -4,14 +4,14 @@ html(lang="en")
 	head
 		meta(charset='UTF-8')
 		title Flip-animation
-		link(rel='stylesheet', href='css/style.css')
+		link(rel='stylesheet', href='./css/style.css')
 		link(rel="icon", href="img/favicon.png")
 
 	body
 
 		#flip-animation
 
-			.button(data-bind="popUpOpen") PopUp
+			.call.button(data-bind="popUpOpen") PopUp
 
 			.popup.hide
 
@@ -27,8 +27,5 @@ html(lang="en")
 				.line.flip-section
 					.wrap
 						.block
-			.line.flip-section#last
-				.wrap
-					.block
 
 		script(src='js/flip_animation.js')
