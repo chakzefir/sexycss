@@ -7,3 +7,4 @@ npm-debug.log
 .idea
 src/.project
 src/.settings
+.DS_Store
